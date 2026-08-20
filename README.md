@@ -166,4 +166,4 @@ from the `SMSIR_API_KEY` environment variable (set it before running).
 
 ## License
 
-Distributed under the terms of the project license.
+[LICENSE](LICENSE)
