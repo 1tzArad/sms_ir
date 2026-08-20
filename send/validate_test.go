@@ -2,6 +2,7 @@ package send_test
 
 import (
 	"context"
+	"net/http"
 	"strings"
 	"testing"
 

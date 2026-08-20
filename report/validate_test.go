@@ -2,6 +2,7 @@ package report_test
 
 import (
 	"context"
+	"net/http"
 	"strings"
 	"testing"
 
