@@ -146,6 +146,11 @@ func (s *Service) ListArchivedReceivedMessages(ctx context.Context, params ListA
 		return nil, fmt.Errorf("toDate is required")
 	}
 	q := url.Values{}
+	// Fix: fromDate and toDate are required (validated above) but were
+	// previously omitted from the query, so the API received no date range.
+	// This mirrors ListArchivedSentMessages.
+	q.Set("fromDate", strconv.FormatInt(params.FromDate, 10))
+	q.Set("toDate", strconv.FormatInt(params.ToDate, 10))
 	if params.PageSize != 0 {
 		q.Set("pageSize", strconv.Itoa(params.PageSize))
 	}
