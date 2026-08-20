@@ -41,7 +41,7 @@ func Do[T any](ctx context.Context, c *Client, method, path string, body any, ou
 	if body != nil {
 		b, err := json.Marshal(body)
 		if err != nil {
-			return fmt.Errorf("SMS_IR_SDK: failed to marshal request body: %w", err)
+			return fmt.Errorf("sms_ir: failed to marshal request body: %w", err)
 		}
 		reqBody = bytes.NewReader(b)
 	}
@@ -50,7 +50,7 @@ func Do[T any](ctx context.Context, c *Client, method, path string, body any, ou
 
 	req, err := http.NewRequestWithContext(ctx, method, url, reqBody)
 	if err != nil {
-		return fmt.Errorf("SMS_IR_SDK: failed to build request: %w", err)
+		return fmt.Errorf("sms_ir: failed to build request: %w", err)
 	}
 
 	req.Header.Set("X-API-KEY", c.apiKey)
@@ -59,19 +59,19 @@ func Do[T any](ctx context.Context, c *Client, method, path string, body any, ou
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return fmt.Errorf("SMS_IR_SDK: http request failed: %w", err)
+		return fmt.Errorf("sms_ir: http request failed: %w", err)
 	}
 	defer resp.Body.Close()
 
 	respBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return fmt.Errorf("SMS_IR_SDK: failed to read response body: %w", err)
+		return fmt.Errorf("sms_ir: failed to read response body: %w", err)
 	}
 
 	var env envelope[T]
 	if len(respBytes) > 0 {
 		if jsonErr := json.Unmarshal(respBytes, &env); jsonErr != nil {
-			return fmt.Errorf("SMS_IR_SDK: failed to decode response (http status %d): %w", resp.StatusCode, jsonErr)
+			return fmt.Errorf("sms_ir: failed to decode response (http status %d): %w", resp.StatusCode, jsonErr)
 		}
 	}
 

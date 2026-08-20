@@ -45,10 +45,10 @@ func (s *Service) LikeToLike(ctx context.Context, req LikeToLikeRequest) (*LikeT
 
 func (s *Service) Verify(ctx context.Context, req VerifyRequest) (*VerifyResponseData, error) {
 	if req.Mobile == "" {
-		return nil, fmt.Errorf("SMS_IR_SDK: mobile is required")
+		return nil, fmt.Errorf("sms_ir: mobile is required")
 	}
 	if req.TemplateID == 0 {
-		return nil, fmt.Errorf("SMS_IR_SDK: templateId is required")
+		return nil, fmt.Errorf("sms_ir: templateId is required")
 	}
 
 	var resp VerifyResponseData
@@ -61,10 +61,10 @@ func (s *Service) Verify(ctx context.Context, req VerifyRequest) (*VerifyRespons
 
 func (s *Service) SendByURL(ctx context.Context, req SendByURLRequest) (*SendByURLResponseData, error) {
 	if req.Username == "" || req.Password == "" {
-		return nil, fmt.Errorf("SMS_IR_SDK: username and password are required")
+		return nil, fmt.Errorf("sms_ir: username and password are required")
 	}
 	if req.Mobile == "" || req.Text == "" {
-		return nil, fmt.Errorf("SMS_IR_SDK: mobile and text are required")
+		return nil, fmt.Errorf("sms_ir: mobile and text are required")
 	}
 
 	q := url.Values{}
@@ -86,7 +86,7 @@ func (s *Service) SendByURL(ctx context.Context, req SendByURLRequest) (*SendByU
 
 func (s *Service) DeleteScheduled(ctx context.Context, packID string) (*DeleteScheduledResponseData, error) {
 	if packID == "" {
-		return nil, fmt.Errorf("SMS_IR_SDK: packID is required")
+		return nil, fmt.Errorf("sms_ir: packID is required")
 	}
 
 	path := "/v1/send/scheduled/" + url.PathEscape(packID)

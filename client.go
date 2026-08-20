@@ -1,10 +1,10 @@
 package sms_ir
 
 import (
-	"github.com/1tzArad/SMS-IR-SDK/internal/transport"
-	"github.com/1tzArad/SMS-IR-SDK/report"
-	"github.com/1tzArad/SMS-IR-SDK/send"
-	"github.com/1tzArad/SMS-IR-SDK/settings"
+	"github.com/1tzArad/sms_ir/internal/transport"
+	"github.com/1tzArad/sms_ir/report"
+	"github.com/1tzArad/sms_ir/send"
+	"github.com/1tzArad/sms_ir/settings"
 )
 
 type Client struct {

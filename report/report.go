@@ -19,7 +19,7 @@ func NewService(tc *transport.Client) *Service {
 
 func (s *Service) GetSentMessageStatus(ctx context.Context, messageId string) (*GetSentMessageStatusResponseData, error) {
 	if messageId == "" {
-		return nil, fmt.Errorf("SMS_IR_SDK: message id is required")
+		return nil, fmt.Errorf("sms_ir: message id is required")
 	}
 
 	path := "/v1/send/" + messageId
@@ -50,7 +50,7 @@ func (s *Service) ListTodaySendPacks(ctx context.Context, params ListTodaySendPa
 }
 func (s *Service) GetSendPackReport(ctx context.Context, params GetSendPackReportRequestParams) (*GetSendPackReportResponseData, error) {
 	if params.PackID == "" {
-		return nil, fmt.Errorf("SMS_IR_SDK: PackID is required")
+		return nil, fmt.Errorf("sms_ir: PackID is required")
 	}
 	path := "/v1/pack/" + params.PackID
 	var resp GetSendPackReportResponseData

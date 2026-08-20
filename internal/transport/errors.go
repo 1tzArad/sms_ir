@@ -11,5 +11,5 @@ type APIError struct {
 }
 
 func (e *APIError) Error() string {
-	return fmt.Sprintf("SMS_IR_SDK: request failed [code=%d]: %s", e.Code, e.Message)
+	return fmt.Sprintf("sms_ir: request failed [code=%d]: %s", e.Code, e.Message)
 }
